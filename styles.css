@@ -1,0 +1,125 @@
+body{
+    margin: 0;
+    color: aliceblue;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: fixed;
+
+    width: 100%;
+    height: 130px;
+    background-color: #005986;
+}
+header img{
+    max-width: 150px;
+}
+header p{
+    font-size: 2.5rem;
+    margin: 0;
+}
+.h-div1{
+    display: flex;
+    justify-content: space-between;
+    width: 12%;
+}
+header .h-div1 input, header .h-div2 input{
+    display: none;
+}
+#arrow{
+    transition: all 0.75s 0.25s;
+    transform: rotate(0);
+}
+#arrow:hover{
+    cursor: pointer;
+}
+header .h-div1 input:checked + #arrow, header .h-div2 input:checked + #arrow{
+    transform: rotate(180deg);
+  }
+
+header .search-container{
+    display: flex;
+    align-items: center;
+    gap: 2%;
+    width: 30%;
+}
+header .search-container .fa-solid{
+    font-size: 1.3rem;
+}
+header input{
+    width: 80%;
+    height: 25px;
+    border-radius: 5px;
+    border: none;
+}
+.h-div2{
+    display: flex;
+    justify-content: space-between;
+    width: 5.5%;
+}
+
+iframe{
+    width: 1000px;
+    height: 400px;
+}
+
+.dropdown{
+    margin-top: 130px;
+    background-color: #005986;
+    width: 20%;
+    height: 250px;
+    overflow-y: scroll;
+    z-index: 9999;
+    position: fixed;
+}
+
+
+
+#stad{
+    color: black;
+}
+
+
+.container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    margin-right: auto;
+    margin-left: auto;
+    width: 80%;
+    height: fit-content;
+}
+.container h1{
+    color: #005986;
+    margin: 100px 0 0 0;
+}
+.head-container{
+    width: 70%;
+    display: flex;
+    justify-content: flex-start;
+}
+.place-container .head-container{
+    width: 100%;
+}
+.place-container .head-container h1{
+    color: aliceblue;
+    margin: 15px 0 0 15px;
+}
+.place-container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+
+    padding-bottom: 20px;
+    width: 70%;
+    background-color: #005986;
+}
+.place-container table{
+    margin-top: 20px;
+    width: 80%;
+}
