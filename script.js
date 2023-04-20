@@ -1,6 +1,6 @@
 var overlay = 'wind';
 var corf = 'c';
-var href = 'http://api.weatherapi.com/v1/current.json?key=318aa1ee4ae245f18db141657230903&q=Uppsala&aqi=no';
+var href = 'https://api.weatherapi.com/v1/current.json?key=318aa1ee4ae245f18db141657230903&q=Uppsala&aqi=no';
 
 
 /*
