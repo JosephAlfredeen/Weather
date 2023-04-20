@@ -41,7 +41,7 @@ function successCallback(pos) {
     console.log(json_test);
     var userCity = json_test.city;
     console.log(userCity);
-    href = `http://api.weatherapi.com/v1/current.json?key=318aa1ee4ae245f18db141657230903&q=${userCity}&aqi=no`; 
+    href = `https://api.weatherapi.com/v1/current.json?key=318aa1ee4ae245f18db141657230903&q=${userCity}&aqi=no`; 
     showInfo(href);
 }
 function errorCAllBack(){
@@ -114,7 +114,7 @@ function showInfo(href){
 function getSearch(){
     let city = document.getElementById("searchbar").value;
     console.log(city);
-    href = `http://api.weatherapi.com/v1/current.json?key=318aa1ee4ae245f18db141657230903&q=${city}&aqi=no`; 
+    href = `https://api.weatherapi.com/v1/current.json?key=318aa1ee4ae245f18db141657230903&q=${city}&aqi=no`; 
     showInfo(href);
 }
 
