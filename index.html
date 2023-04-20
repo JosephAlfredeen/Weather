@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather.com or something</title>
+    <title>WOS</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <script src="script.js"></script>
@@ -16,35 +16,34 @@
         <div class="h-div1">
             <label for="checkbox1">
                 <input type="checkbox" id="checkbox1">
-                    <i class="fa-solid fa-arrow-up fa-2x" id="arrow"></i>
+                    <i class="fa-solid fa-arrow-up fa-2x" id="dropArrow"></i>
             </label>
             <p>Popular</p>
         </div>
         <a href="index.html"><img src="images/wos-logo (1).png" alt="WOS logo"></a>
         <div class="search-container">
             <i class="fa-solid fa-magnifying-glass"></i>
-            <input id="searchbar" type="text" placeholder="Search..." onkeydown="test()">
+            <input id="searchbar" type="text" placeholder="Search..." onkeydown="search()">
         </div>
         <div class="h-div2">
             <label for="checkbox2">
                 <input type="checkbox" id="checkbox2">
-                    <i class="fa-solid fa-arrow-up fa-2x" id="arrow"></i>
+                    <i class="fa-solid fa-arrow-up fa-2x" id="c_fArrow"></i>
             </label>
-            <p>C°</p>
+            <p id="c_f">C°</p>
         </div>
+        <button onclick="getLocation()"></button>
     </header>
 
-    <div class="dropdown">
-        
-    </div>
+    <div id="dropdown"></div>
 
-    <div class="container">
+    <div class="container" id="container">
         <div class="head-container">
             <h1>Favorites</h1>
         </div>
         <div class="place-container">
             <div class="head-container">
-                <h1><span id="city"></span> in <span id="country"></span></h>
+                <h1><span id="city"></span>&nbspin&nbsp<span id="country"></span></h>
             </div>
             <table>
                 <thead>
@@ -54,24 +53,44 @@
                         <td>Wind speed (gusts)</td>
                         <td>Humidity</td>
                         <td>Pressure</td>
+                        <td>Precipitation</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td><span id="temp"></span> °C</td>
-                        <td><span id="feelsLike"></span> °C</td>
+                        <td><span id="temp"></span></td>
+                        <td><span id="feelsLike"></span></td>
                         <td><span id="wind"></span> m/s (<span id="gusts"></span>)</td>
                         <td><span id="humidity"></span>%</td>
                         <td><span id="pressure"></span> mb</td>
+                        <td><span id="rain"></span> mm</td>
                     </tr>
                 </tbody>
             </table>
         </div>
-    
-    
-        <div id="frame"></div>
-    </div>
+
+        <div id="loadingContainer">
+            <div class="loadingio-spinner-eclipse-qbgho4nb7xo"><div class="ldio-qhboyfg0l6f">
+                <div></div>
+                </div></div>
+            </div>
+                <div id="frameContainer">
+                <h1 id="frameHead"></h1>
+                <div id="frame"></div>
+                <button id="tempButton">Temp</button>
+            </div>
+        </div>
 
     
+<script>
+    var dropArrow = document.getElementById('dropArrow');
+    dropArrow.addEventListener('click', showDropdown);
+
+    var c_fArrow = document.getElementById('c_fArrow')
+    c_fArrow.addEventListener('click', changec_f)
+
+    var temp = document.getElementById('tempButton');
+    temp.addEventListener('click', changeFrame)
+</script>
 </body>
 </html>
