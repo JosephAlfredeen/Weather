@@ -3,29 +3,14 @@ var corf = 'c';
 var href = 'https://api.weatherapi.com/v1/current.json?key=318aa1ee4ae245f18db141657230903&q=Uppsala&aqi=no';
 
 
-/*
-// Step 2: Get city name
-function getCity(coordinate1, coordinate2) {
-    var xhr = new XMLHttpRequest();
-    var lat = coordinate1;
-    var lng = coordinate2;
-  
-    // Paste your LocationIQ token below.
-    xhr.open('GET', "https://us1.locationiq.com/v1/reverse.php?key=YOUR_PRIVATE_TOKEN&lat=" + lat + "&lon=" + lng + "&format=json", true);
-    xhr.send();
-    xhr.onreadystatechange = processRequest;
-    xhr.addEventListener("readystatechange", processRequest, false);
-  
-    function processRequest(e) {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            var response = JSON.parse(xhr.responseText);
-            var city = response.address.city;
-            console.log(city);
-            return;
-        }
-    }
+function test(){
+    var v = 'hej'
+    var firstv = v.charAt(0)
+    var vnew = firstv.toUpperCase()
+
+    console.log(vnew)
 }
-*/
+
 
 function getLocation(){
     navigator.geolocation.getCurrentPosition(successCallback,errorCAllBack)
@@ -134,7 +119,11 @@ function showMap(){
     var container = document.getElementById('frameContainer');
     loading.style.display = 'flex';
     container.style.display = 'none';
-    document.getElementById('frameHead').innerHTML = overlay;
+    displayOverlay = overlay.toLowerCase().replace(/\b[a-z]/g, function(letter) {
+        return letter.toUpperCase();
+    });
+    console.log(displayOverlay)
+    document.getElementById('frameHead').innerHTML = displayOverlay;
     let mapSrc = `https://embed.windy.com/embed2.html?lat=${lat}&lon=${long}&width=650&height=450&zoom=5&level=surface&overlay=${overlay}&product=ecmwf&menu=&message=&marker=&calendar=now&pressure=&type=map&location=coordinates&detail=&metricWind=default&metricTemp=default&radarRange=-1`
     const frame = document.querySelector('#frame');
     frame.innerHTML = `
@@ -171,13 +160,16 @@ function changec_f() {
 
 // Script to change if iframe shows temp or wind speeds
 function changeFrame(){
-    if (overlay=='wind') {
-        overlay = 'temp';
-        document.getElementById('tempButton').innerHTML = overlay;
+    if (overlay== 'wind') {
+        document.getElementById('tempButton').innerHTML = 'Show '+ overlay;
+    }
+    else
+        document.getElementById('tempButton').innerHTML = 'Show '+ overlay;
+    if (overlay== 'wind') {
+        overlay = 'temp'
     }
     else
         overlay = 'wind'
-        document.getElementById('tempButton').innerHTML = overlay;
     showMap();
 }
 
