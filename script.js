@@ -58,6 +58,8 @@ function getInfo(yourUrl){
     console.log('long is '+long)
     timestamp = json_obj.current.last_updated;
     console.log(timestamp);
+    text = json_obj.current.condition.text;
+    console.log('text = '+ text)
     showMap();
 }
 
@@ -91,6 +93,7 @@ function showInfo(href, search){
         document.querySelector('#search-pressure').innerHTML = pressure;
         document.querySelector('#search-rain').innerHTML = rain;
         document.querySelector('#search-timestamp').innerHTML = timestamp; 
+        document.querySelector('#search-text').innerHTML = text;
     }
     else if(search == false){
         if (corf == 'c'){
@@ -109,6 +112,7 @@ function showInfo(href, search){
         document.querySelector('#pressure').innerHTML = pressure;
         document.querySelector('#rain').innerHTML = rain;
         document.querySelector('#timestamp').innerHTML = timestamp;
+        document.querySelector('#text').innerHTML = text;
     }
 }
 
