@@ -21,6 +21,11 @@ body{
     background: #555; 
   }
 
+a, a:link, a:visited, a:focus, a:hover, a:active{       /*För att alla länkar ska ha samma färg som resten av texten*/
+    color:aliceblue;
+    text-decoration:none;
+}
+
 header{
     display: flex;
     align-items: center;
@@ -262,7 +267,9 @@ footer img{
 }
 
 #socialmedia{
-    color: aliceblue;
+    margin-top: 30px;
+    display: flex;
+    gap: 20px;
 }
 
 .footer-img-container{
