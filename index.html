@@ -20,7 +20,7 @@
             </label>
             <p>Popular</p>
         </div>
-        <a href="index.html"><img src="images/wos-logo (1).png" alt="WOS logo"></a>
+        <a href="index.html"><img src="images/wos-logo.png" alt="WOS logo"></a>
         <div class="search-container">
             <i class="fa-solid fa-magnifying-glass"></i>
             <input id="searchbar" type="text" placeholder="Search..." onkeydown="search()">
@@ -34,7 +34,15 @@
         </div>
     </header>
 
-    <div id="dropdown"></div>
+    <div id="dropdown">
+        <p onclick="showInfo('https://api.weatherapi.com/v1/current.json?key=318aa1ee4ae245f18db141657230903&q=china&aqi=no', true)">China</p>
+        <p onclick="showInfo('https://api.weatherapi.com/v1/current.json?key=318aa1ee4ae245f18db141657230903&q=spain&aqi=no', true)">Spain</p>
+        <p onclick="showInfo('https://api.weatherapi.com/v1/current.json?key=318aa1ee4ae245f18db141657230903&q=usa&aqi=no', true)">Usa</p>
+        <p onclick="showInfo('https://api.weatherapi.com/v1/current.json?key=318aa1ee4ae245f18db141657230903&q=france&aqi=no', true)">France</p>
+        <p onclick="showInfo('https://api.weatherapi.com/v1/current.json?key=318aa1ee4ae245f18db141657230903&q=south africa&aqi=no', true)">South Africa</p>
+        <p onclick="showInfo('https://api.weatherapi.com/v1/current.json?key=318aa1ee4ae245f18db141657230903&q=sweden&aqi=no', true)">Sweden</p>
+        <p onclick="showInfo('https://api.weatherapi.com/v1/current.json?key=318aa1ee4ae245f18db141657230903&q=iceland&aqi=no', true)">Iceland</p>
+    </div>
 
 
 
@@ -45,7 +53,7 @@
             </div>
             <div class="place-container">
                 <div class="head-container">
-                    <p><span id="city"></span>&nbspin&nbsp<span id="country"></span></p>
+                    <p><span id="city"></span>&nbsp; in &nbsp;<span id="country"></span></p>
                     <p>Last Updated <span id="timestamp"></span></p>
                 </div>
                 <table>
@@ -81,7 +89,7 @@
             </div>
             <div class="place-container">
                 <div class="head-container">
-                    <p><span id="search-city"></span>&nbspin&nbsp<span id="search-country"></span></p>
+                    <p><span id="search-city"></span>&nbsp; in &nbsp;<span id="search-country"></span></p>
                     <p>Last Updated (Local time) <span id="search-timestamp"></span></p>
                 </div>
                 <table>

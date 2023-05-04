@@ -4,6 +4,23 @@ body{
     font-family: 'Times New Roman', Times, serif;
 }
 
+/* Scrollbar style*/
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+
 header{
     display: flex;
     align-items: center;
@@ -83,14 +100,24 @@ iframe{
 }
 
 #dropdown{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     margin-top: 130px;
     background-color: #005986;
     width: 20%;
-    height: 250px;
+    height: 300px;
+
+    font-size: 2vw;
+
     overflow-y: scroll;
     z-index: 9999;
     position: fixed;
     visibility: hidden;
+}
+#dropdown p{
+    margin: 10px;
+    text-decoration: underline;
 }
 
 .container{
