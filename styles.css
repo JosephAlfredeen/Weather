@@ -219,6 +219,9 @@ iframe{
     .place-container table{
         width: 100%;
     }
+    #frameContainer{
+        width: 100%;
+    }
 }
 
 #test{
