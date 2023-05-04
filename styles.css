@@ -199,7 +199,7 @@ iframe{
 #your-location-container, #searched-container{
     width: 70%;
 }
-#your-location-container{
+#searched-container{
     display: none;
 }
 

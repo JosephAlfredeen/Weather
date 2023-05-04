@@ -60,6 +60,8 @@ function getInfo(yourUrl){
     console.log(timestamp);
     text = json_obj.current.condition.text;
     console.log('text = '+ text)
+    icon = json_obj.current.condition.icon;
+    console.log('icon = '+ icon)
     showMap();
 }
 
@@ -76,7 +78,7 @@ function showInfo(href, search){
     console.log('corf = '+corf);
     getInfo(href);
     if (search == true){
-        document.querySelector('#your-location-container').style.display = 'block'
+        document.querySelector('#searched-container').style.display = 'block'
         if (corf == 'c'){
             document.querySelector('#search-temp').innerHTML = temp_c+' °C';
             document.querySelector('#search-feelsLike').innerHTML = feelslike_c+' °C';
@@ -94,6 +96,7 @@ function showInfo(href, search){
         document.querySelector('#search-rain').innerHTML = rain;
         document.querySelector('#search-timestamp').innerHTML = timestamp; 
         document.querySelector('#search-text').innerHTML = text;
+        document.querySelector('#search-condition-icon').src = icon;
     }
     else if(search == false){
         if (corf == 'c'){
@@ -113,6 +116,7 @@ function showInfo(href, search){
         document.querySelector('#rain').innerHTML = rain;
         document.querySelector('#timestamp').innerHTML = timestamp;
         document.querySelector('#text').innerHTML = text;
+        document.querySelector('#condition-icon').src = icon;
     }
 }
 
