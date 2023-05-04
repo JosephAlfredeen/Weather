@@ -10,13 +10,9 @@ function getLocation(){
 function successCallback(pos) {
     const crd = pos.coords;
 
-    console.log('Latitude : '+crd.latitude);
-    console.log('Longitude: '+crd.longitude);
-
     var json_city = JSON.parse(Get(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${crd.latitude}&longitude=${crd.longitude }&localityLanguage=en`));
     console.log(json_city);
     var userCity = json_city.city;
-    console.log(userCity);
     href = `https://api.weatherapi.com/v1/current.json?key=318aa1ee4ae245f18db141657230903&q=${userCity}&aqi=no`; 
     showInfo(href, false);
 }
@@ -29,39 +25,22 @@ function errorCallBack(){
 // Script to add all weather information to variables.
 function getInfo(yourUrl){
     var json_obj = JSON.parse(Get(yourUrl));
-    console.log(json_obj);
     temp_c = json_obj.current.temp_c;
-    console.log(temp_c+" degrees celsius");
     temp_f = json_obj.current.temp_f;
-    console.log(temp_f+" degrees fahrenheit")
     feelslike_c = json_obj.current.feelslike_c;
-    console.log("feels like "+feelslike_c+" degrees celsius");
     feelslike_f = json_obj.current.feelslike_f;
-    console.log("feels like "+feelslike_f+" degrees fahrenheit")
     wind_ms = Math.round(json_obj.current.wind_kph/3.6);
-    console.log("wind= "+wind_ms+" m/s");
-    country = json_obj.location.country
-    console.log("country is "+country)
-    city = json_obj.location.name
-    console.log("city is "+city)
-    rain = json_obj.current.precip_mm
-    console.log('rain = '+rain+' mm')
-    gusts = Math.round(json_obj.current.gust_kph/3.6)
-    console.log('Gusts = '+gusts+' m/s')
-    humidity = json_obj.current.humidity
-    console.log('humidity = '+humidity+"%")
-    pressure = json_obj.current.pressure_mb
-    console.log('pressure = '+pressure+(' mb'))
-    lat = json_obj.location.lat
-    console.log('lat is '+lat)
-    long = json_obj.location.lon
-    console.log('long is '+long)
+    country = json_obj.location.country;
+    city = json_obj.location.name;
+    rain = json_obj.current.precip_mm;
+    gusts = Math.round(json_obj.current.gust_kph/3.6);
+    humidity = json_obj.current.humidity;
+    pressure = json_obj.current.pressure_mb;
+    lat = json_obj.location.lat;
+    long = json_obj.location.lon;
     timestamp = json_obj.current.last_updated;
-    console.log(timestamp);
     text = json_obj.current.condition.text;
-    console.log('text = '+ text)
     icon = json_obj.current.condition.icon;
-    console.log('icon = '+ icon)
     showMap();
 }
 
@@ -75,7 +54,6 @@ function Get(yourUrl){
 
 // Script update weather information on index.html
 function showInfo(href, search){
-    console.log('corf = '+corf);
     getInfo(href);
     if (search == true){
         document.querySelector('#searched-container').style.display = 'block'
@@ -126,11 +104,8 @@ function showInfo(href, search){
 
 // Script to get new href
 function getSearch(){
-    console.log('get search began')
     let city = document.getElementById("searchbar").value;
-    console.log(city);
     href = `https://api.weatherapi.com/v1/current.json?key=318aa1ee4ae245f18db141657230903&q=${city}&aqi=no`
-    console.log('href = ' + href);
     showInfo(href, true);
 }
 
@@ -153,7 +128,6 @@ function showMap(){
     displayOverlay = overlay.toLowerCase().replace(/\b[a-z]/g, function(letter) {
         return letter.toUpperCase();
     });
-    console.log(displayOverlay)
     document.getElementById('frameHead').innerHTML = displayOverlay;
     let mapSrc = `https://embed.windy.com/embed2.html?lat=${lat}&lon=${long}&width=650&height=450&zoom=5&level=surface&overlay=${overlay}&product=ecmwf&menu=&message=&marker=&calendar=now&pressure=&type=map&location=coordinates&detail=&metricWind=default&metricTemp=default&radarRange=-1`
     const frame = document.querySelector('#frame');
@@ -178,12 +152,10 @@ function changec_f() {
     if (corf == 'c'){
         document.getElementById('c_f').innerHTML = 'F°';
         corf = 'f';
-        console.log('change c to f')
     }
     else{
         document.getElementById('c_f').innerHTML = 'C°';
         corf = 'c';
-        console.log('change f to c')
     }
     showInfo(href, true);
     showInfo(href, false);
@@ -213,33 +185,3 @@ function loadIframe(){
         container.style.display = 'flex';
     ; }, 1500);
 }
-
-
-
-// Non functioning script to find when iframe is loded
-/*
-function checkIframeLoaded() {
-    console.log('check iframe')
-    // Get a handle to the iframe element
-    var iframe = document.getElementById('iframe');
-    var iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-
-    // Check if loading is complete
-    if (  iframeDoc.readyState  == 'complete' ) {
-        //iframe.contentWindow.alert("Hello");
-        iframe.contentWindow.onload = function(){
-            alert("I am loaded");
-        };
-        // The loading is complete, call the function we want executed once the iframe is loaded
-        afterLoading();
-        return;
-    } 
-
-    // If we are here, it is not loaded. Set things up so we check   the status again in 100 milliseconds
-    window.setTimeout(checkIframeLoaded, 100);
-}
-
-function afterLoading(){
-    alert("I am here");
-}
-*/
