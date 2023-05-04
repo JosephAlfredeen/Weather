@@ -59,28 +59,36 @@
                 <div class="condition-container">
                     <p>Condition is <span id="text"></span><img src="" alt="Icon of weather condition" id="condition-icon"></p>
                 </div>
-                <table>
-                    <thead>
-                        <tr>
-                            <td>Temp</td>
-                            <td>Feels like</td>
-                            <td>Wind speed (gusts)</td>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <td>Temp</td>
+                                <td>Feels like</td>
+                                <td>Wind speed (gusts)</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span id="temp"></span></td>
+                                <td><span id="feelsLike"></span></td>
+                                <td><span id="wind"></span> m/s (<span id="gusts"></span>)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
                             <td>Humidity</td>
                             <td>Pressure</td>
                             <td>Precipitation</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><span id="temp"></span></td>
-                            <td><span id="feelsLike"></span></td>
-                            <td><span id="wind"></span> m/s (<span id="gusts"></span>)</td>
+                        </thead>
+                        <tbody>
                             <td><span id="humidity"></span>%</td>
                             <td><span id="pressure"></span> mb</td>
                             <td><span id="rain"></span> mm</td>
-                        </tr>
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
@@ -97,28 +105,36 @@
                 <div class="condition-container">
                     <p>Condition is <span id="search-text"></span><img src="" alt="Icon of weather condition" id="search-condition-icon"></p>
                 </div>
-                <table>
-                    <thead>
-                        <tr>
-                            <td>Temp</td>
-                            <td>Feels like</td>
-                            <td>Wind speed (gusts)</td>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <td>Temp</td>
+                                <td>Feels like</td>
+                                <td>Wind speed (gusts)</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span id="search-temp"></span></td>
+                                <td><span id="search-feelsLike"></span></td>
+                                <td><span id="search-wind"></span> m/s (<span id="search-gusts"></span>)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
                             <td>Humidity</td>
                             <td>Pressure</td>
                             <td>Precipitation</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><span id="search-temp"></span></td>
-                            <td><span id="search-feelsLike"></span></td>
-                            <td><span id="search-wind"></span> m/s (<span id="search-gusts"></span>)</td>
+                        </thead>
+                        <tbody>
                             <td><span id="search-humidity"></span>%</td>
                             <td><span id="search-pressure"></span> mb</td>
                             <td><span id="search-rain"></span> mm</td>
-                        </tr>
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
@@ -145,10 +161,9 @@
             <p>windy.com</p>
         </div>
         <div id="socialmedia">
-            <a href="https://twitter.com/PabloEscobarWW"><i class="fa-brands fa-twitter"></i></a>
-            <a href="https://www.facebook.com/public/Pablo-Escobar"><i class="fa-brands fa-facebook"></i></a>
-            <a href="https://www.instagram.com/explore/locations/270471668/pablo-escobar/"><i class="fa-brands fa-instagram"></i></a>
-            <a href=""><i class="fab fa-snapchat"></i></a>
+            <a href="https://twitter.com/weather"><i class="fa-brands fa-twitter"></i></a>
+            <a href="https://www.facebook.com/wxforecast/"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://www.instagram.com/explore/tags/weather/"><i class="fa-brands fa-instagram"></i></a>
         </div>
     </div>
 

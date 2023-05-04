@@ -26,6 +26,12 @@ a, a:link, a:visited, a:focus, a:hover, a:active{       /*För att alla länkar 
     text-decoration:none;
 }
 
+table, td {
+    border: 1px solid aliceblue;
+    border-collapse: collapse;
+    padding: 10px 10px 10px 10px;
+}
+
 header{
     display: flex;
     align-items: center;
@@ -195,6 +201,10 @@ iframe{
     width: 80%;
     padding: 5px;
 }
+.table-container{
+    display: flex;
+    flex-direction: row;
+}
 
 #your-location-container, #searched-container{
     width: 70%;
@@ -307,7 +317,7 @@ footer img{
     }
 }
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 850px) {
     .container, #searched-container, #your-location-container{
         width: 100%;
     }
@@ -317,6 +327,8 @@ footer img{
     .place-container table{
         width: 100%;
     }
+}
+@media screen and (max-width: 650px) {
     #frameContainer{
         width: 90%;
     }
@@ -325,6 +337,11 @@ footer img{
     }
     #socialmedia{
         font-size: 2rem;
+    }
+}
+@media screen and (max-width: 450px) {
+    .table-container{
+        flex-direction: column;
     }
 }
 
