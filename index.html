@@ -22,7 +22,7 @@
         </div>
         <a href="index.html"><img src="images/wos-logo.png" alt="WOS logo"></a>
         <div class="search-container">
-            <i class="fa-solid fa-magnifying-glass"></i>
+            <i class="fa-solid fa-magnifying-glass" onclick="getSearch()"></i>
             <input id="searchbar" type="text" placeholder="Search..." onkeydown="search()">
         </div>
         <div class="h-div2">
@@ -43,7 +43,6 @@
         <p onclick="showInfo('https://api.weatherapi.com/v1/current.json?key=318aa1ee4ae245f18db141657230903&q=sweden&aqi=no', true)">Sweden</p>
         <p onclick="showInfo('https://api.weatherapi.com/v1/current.json?key=318aa1ee4ae245f18db141657230903&q=iceland&aqi=no', true)">Iceland</p>
     </div>
-
 
 
     <div class="container" id="container">
@@ -96,6 +95,7 @@
             </div>
         </div>
     </div>
+
     <div class="container" id="container">
         <div id="searched-container">
             <div class="head-container">
@@ -147,7 +147,6 @@
         </div>
     </div>
 
-        
 
         <div id="loadingContainer">
             <div class="loadingio-spinner-eclipse-qbgho4nb7xo"><div class="ldio-qhboyfg0l6f">
@@ -165,8 +164,8 @@
     <div class="footer-container">
         <div id="footer-links">
             <h1>Live Weather Update</h1>
-            <p>weatherapi.com</p>
-            <p>windy.com</p>
+            <a href="https://www.weatherapi.com/"><p>weatherapi.com</p></a>
+            <a href="https://www.windy.com/?59.613,17.850,5"><p>windy.com</p></a>
         </div>
         <div id="socialmedia">
             <a href="https://twitter.com/weather"><i class="fa-brands fa-twitter"></i></a>
@@ -180,6 +179,7 @@
         <p>Copyright @ 2023 Joseph, Inc.</p>
     </div>
 </footer>
+
 
 <script>
     var dropArrow = document.getElementById('dropArrow');
