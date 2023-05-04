@@ -1,35 +1,28 @@
 var overlay = 'wind';
 var corf = 'c';
-var href = 'https://api.weatherapi.com/v1/current.json?key=318aa1ee4ae245f18db141657230903&q=Uppsala&aqi=no';
 
-
-function test(){
-    var v = 'hej'
-    var firstv = v.charAt(0)
-    var vnew = firstv.toUpperCase()
-
-    console.log(vnew)
-}
-
-
+// Script för att hämta användarens cordinater.
 function getLocation(){
-    navigator.geolocation.getCurrentPosition(successCallback,errorCAllBack)
+    navigator.geolocation.getCurrentPosition(successCallback,errorCallBack)
 }
 
+// Script för att omvandla cordinaterna till namnet på en stad.
 function successCallback(pos) {
     const crd = pos.coords;
 
     console.log('Latitude : '+crd.latitude);
     console.log('Longitude: '+crd.longitude);
 
-    var json_test = JSON.parse(Get(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${crd.latitude}&longitude=${crd.longitude }&localityLanguage=en`));
-    console.log(json_test);
-    var userCity = json_test.city;
+    var json_city = JSON.parse(Get(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${crd.latitude}&longitude=${crd.longitude }&localityLanguage=en`));
+    console.log(json_city);
+    var userCity = json_city.city;
     console.log(userCity);
     href = `https://api.weatherapi.com/v1/current.json?key=318aa1ee4ae245f18db141657230903&q=${userCity}&aqi=no`; 
-    showInfo(href);
+    showInfo(href, false);
 }
-function errorCAllBack(){
+// Tar bort rutan för informationen om användarens stad om användaren inte godkänner till att få åtkomst till dens plats information.
+function errorCallBack(){
+    document.getElementById('your-location-container').style.display = 'none';
     alert('Could not retrieve users location');
 }
 
@@ -63,6 +56,8 @@ function getInfo(yourUrl){
     console.log('lat is '+lat)
     long = json_obj.location.lon
     console.log('long is '+long)
+    timestamp = json_obj.current.last_updated;
+    console.log(timestamp);
     showMap();
 }
 
@@ -75,36 +70,61 @@ function Get(yourUrl){
 }
 
 // Script update weather information on index.html
-function showInfo(href){
+function showInfo(href, search){
     console.log('corf = '+corf);
     getInfo(href);
-    if (corf == 'c'){
-        document.querySelector('#temp').innerHTML = temp_c+' °C';
-        document.querySelector('#feelsLike').innerHTML = feelslike_c+' °C';
+    if (search == true){
+        document.querySelector('#your-location-container').style.display = 'block'
+        if (corf == 'c'){
+            document.querySelector('#search-temp').innerHTML = temp_c+' °C';
+            document.querySelector('#search-feelsLike').innerHTML = feelslike_c+' °C';
+        }
+        else{
+            document.querySelector('#search-temp').innerHTML = temp_f+' °F';
+            document.querySelector('#search-feelsLike').innerHTML = feelslike_f+' °F';
+        }
+        document.querySelector('#search-wind').innerHTML = wind_ms;
+        document.querySelector('#search-city').innerHTML = city;
+        document.querySelector('#search-country').innerHTML = country;
+        document.querySelector('#search-gusts').innerHTML = gusts;
+        document.querySelector('#search-humidity').innerHTML = humidity;
+        document.querySelector('#search-pressure').innerHTML = pressure;
+        document.querySelector('#search-rain').innerHTML = rain;
+        document.querySelector('#search-timestamp').innerHTML = timestamp; 
     }
-    else{
-        document.querySelector('#temp').innerHTML = temp_f+' °F';
-        document.querySelector('#feelsLike').innerHTML = feelslike_f+' °F';
+    else if(search == false){
+        if (corf == 'c'){
+            document.querySelector('#temp').innerHTML = temp_c+' °C';
+            document.querySelector('#feelsLike').innerHTML = feelslike_c+' °C';
+        }
+        else{
+            document.querySelector('#temp').innerHTML = temp_f+' °F';
+            document.querySelector('#feelsLike').innerHTML = feelslike_f+' °F';
+        }
+        document.querySelector('#wind').innerHTML = wind_ms;
+        document.querySelector('#city').innerHTML = city;
+        document.querySelector('#country').innerHTML = country;
+        document.querySelector('#gusts').innerHTML = gusts;
+        document.querySelector('#humidity').innerHTML = humidity;
+        document.querySelector('#pressure').innerHTML = pressure;
+        document.querySelector('#rain').innerHTML = rain;
+        document.querySelector('#timestamp').innerHTML = timestamp;
     }
-    document.querySelector('#wind').innerHTML = wind_ms;
-    document.querySelector('#city').innerHTML = city;
-    document.querySelector('#country').innerHTML = country;
-    document.querySelector('#gusts').innerHTML = gusts;
-    document.querySelector('#humidity').innerHTML = humidity;
-    document.querySelector('#pressure').innerHTML = pressure;
-    document.querySelector('#rain').innerHTML = rain;
 }
 
 // Script to get new href
 function getSearch(){
+    console.log('get search began')
     let city = document.getElementById("searchbar").value;
     console.log(city);
-    href = `https://api.weatherapi.com/v1/current.json?key=318aa1ee4ae245f18db141657230903&q=${city}&aqi=no`; 
-    showInfo(href);
+    href = `https://api.weatherapi.com/v1/current.json?key=318aa1ee4ae245f18db141657230903&q=${city}&aqi=no`
+    console.log('href = ' + href);
+    showInfo(href, true);
 }
 
 // Script to add search input to variable on key press enter
 function search(){
+    console.log('began search')
     var input = document.getElementById("searchbar");
     input.addEventListener("keypress", function(event) {
     if (event.key === "Enter") {
@@ -142,7 +162,6 @@ function showDropdown() {
             node.style.visibility = 'visible'
     }, 250);
 }
-
 // Script to change between celius and fahrenheit
 function changec_f() {
     if (corf == 'c'){
@@ -155,7 +174,8 @@ function changec_f() {
         corf = 'c';
         console.log('change f to c')
     }
-    showInfo(href);
+    showInfo(href, true);
+    showInfo(href, false);
 }
 
 // Script to change if iframe shows temp or wind speeds

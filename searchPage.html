@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <script src="script.js"></script>
 </head>
-<body onload='getLocation()'>
+<body>
 
     
     <header>
@@ -36,17 +36,14 @@
 
     <div id="dropdown"></div>
 
-
-
     <div class="container" id="container">
-        <div id="searched-container">
+        <div id="your-location-container">
             <div class="head-container">
-                <h1>Your Location</h1>
+                <h1>Searched location</h1>
             </div>
             <div class="place-container">
                 <div class="head-container">
-                    <p><span id="city"></span>&nbspin&nbsp<span id="country"></span></p>
-                    <p>Last Updated <span id="timestamp"></span></p>
+                    <h1><span id="city"></span>&nbspin&nbsp<span id="country"></span></h>
                 </div>
                 <table>
                     <thead>
@@ -72,45 +69,6 @@
                 </table>
             </div>
         </div>
-    </div>
-
-    <div class="container" id="container">
-        <div id="your-location-container">
-            <div class="head-container">
-                <h1>Searched Location</h1>
-            </div>
-            <div class="place-container">
-                <div class="head-container">
-                    <p><span id="search-city"></span>&nbspin&nbsp<span id="search-country"></span></p>
-                    <p>Last Updated (Local time) <span id="search-timestamp"></span></p>
-                </div>
-                <table>
-                    <thead>
-                        <tr>
-                            <td>Temp</td>
-                            <td>Feels like</td>
-                            <td>Wind speed (gusts)</td>
-                            <td>Humidity</td>
-                            <td>Pressure</td>
-                            <td>Precipitation</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><span id="search-temp"></span></td>
-                            <td><span id="search-feelsLike"></span></td>
-                            <td><span id="search-wind"></span> m/s (<span id="search-gusts"></span>)</td>
-                            <td><span id="search-humidity"></span>%</td>
-                            <td><span id="search-pressure"></span> mb</td>
-                            <td><span id="search-rain"></span> mm</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-
-        
 
         <div id="loadingContainer">
             <div class="loadingio-spinner-eclipse-qbgho4nb7xo"><div class="ldio-qhboyfg0l6f">
@@ -134,6 +92,13 @@
 
     var temp = document.getElementById('tempButton');
     temp.addEventListener('click', changeFrame)
+
+
+    document.addEventListener("DOMContentLoaded", function(event) {
+        console.log('redo');
+        console.log(href)
+        showInfo(href);
+    });
 </script>
 </body>
 </html>
