@@ -132,11 +132,12 @@ function getSearch(){
 
 // Script to add search input to variable on key press enter
 function search(){
-    console.log('began search')
     var input = document.getElementById("searchbar");
+    var location = document.querySelector('#searched-container');
     input.addEventListener("keypress", function(event) {
     if (event.key === "Enter") {
         getSearch();
+        location.scrollIntoView({ behavior:'smooth'});
     }   
     });
 }

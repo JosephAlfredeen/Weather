@@ -208,6 +208,7 @@ iframe{
 
 #your-location-container, #searched-container{
     width: 70%;
+    scroll-margin: 50px;
 }
 #searched-container{
     display: none;
@@ -312,7 +313,7 @@ footer img{
 }
 
 @media screen and (max-width: 750px) {
-    .h-div1 p, .h-div2 p{
+    .h-div1 p, header img{
         display: none;
     }
 }
