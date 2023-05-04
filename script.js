@@ -97,6 +97,8 @@ function showInfo(href, search){
         document.querySelector('#search-timestamp').innerHTML = timestamp; 
         document.querySelector('#search-text').innerHTML = text;
         document.querySelector('#search-condition-icon').src = icon;
+        var location = document.querySelector('#searched-container');
+        location.scrollIntoView({ behavior:'smooth'});
     }
     else if(search == false){
         if (corf == 'c'){
@@ -117,6 +119,8 @@ function showInfo(href, search){
         document.querySelector('#timestamp').innerHTML = timestamp;
         document.querySelector('#text').innerHTML = text;
         document.querySelector('#condition-icon').src = icon;
+        var location = document.querySelector('#your-location-container');
+        location.scrollIntoView({ behavior:'smooth'});
     }
 }
 
@@ -133,11 +137,9 @@ function getSearch(){
 // Script to add search input to variable on key press enter
 function search(){
     var input = document.getElementById("searchbar");
-    var location = document.querySelector('#searched-container');
     input.addEventListener("keypress", function(event) {
     if (event.key === "Enter") {
         getSearch();
-        location.scrollIntoView({ behavior:'smooth'});
     }   
     });
 }
