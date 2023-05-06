@@ -1,3 +1,4 @@
+// Definerar variabler på startvärden
 var overlay = 'wind';
 var corf = 'c';
 
@@ -11,8 +12,9 @@ function successCallback(pos) {
     const crd = pos.coords;
 
     var json_city = JSON.parse(Get(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${crd.latitude}&longitude=${crd.longitude }&localityLanguage=en`));
-    console.log(json_city);
     var userCity = json_city.city;
+
+    // Sätter href till användarens stad
     href = `https://api.weatherapi.com/v1/current.json?key=318aa1ee4ae245f18db141657230903&q=${userCity}&aqi=no`; 
     showInfo(href, false);
 }
@@ -22,7 +24,7 @@ function errorCallBack(){
     alert('Could not retrieve users location');
 }
 
-// Script to add all weather information to variables.
+// Hämtar all väder information om platsen användaren behöver
 function getInfo(yourUrl){
     var json_obj = JSON.parse(Get(yourUrl));
     temp_c = json_obj.current.temp_c;
@@ -44,15 +46,17 @@ function getInfo(yourUrl){
     showMap();
 }
 
-// Script to get something
+// Hämtar ut infon från url jag skapat
 function Get(yourUrl){
-    var Httpreq = new XMLHttpRequest(); // a new request
+    var Httpreq = new XMLHttpRequest();
     Httpreq.open("GET",yourUrl,false);
     Httpreq.send(null);
     return Httpreq.responseText;
 }
 
-// Script update weather information on index.html
+// Funktion för att updatera informationen på sidan. 
+// Kollar ifall det är "search" rutan som ska uppdateras eller inte.
+// Scrollar sedan till rutan som uppdaterats
 function showInfo(href, search){
     getInfo(href);
     if (search == true){
@@ -75,6 +79,7 @@ function showInfo(href, search){
         document.querySelector('#search-timestamp').innerHTML = timestamp; 
         document.querySelector('#search-text').innerHTML = text;
         document.querySelector('#search-condition-icon').src = icon;
+
         var location = document.querySelector('#searched-container');
         location.scrollIntoView({ behavior:'smooth'});
     }
@@ -97,19 +102,20 @@ function showInfo(href, search){
         document.querySelector('#timestamp').innerHTML = timestamp;
         document.querySelector('#text').innerHTML = text;
         document.querySelector('#condition-icon').src = icon;
+
         var location = document.querySelector('#your-location-container');
         location.scrollIntoView({ behavior:'smooth'});
     }
 }
 
-// Script to get new href
+// Lägger till det man skrivit i sökrutan i en variabel, som sedan läggs till i url.
 function getSearch(){
     let city = document.getElementById("searchbar").value;
     href = `https://api.weatherapi.com/v1/current.json?key=318aa1ee4ae245f18db141657230903&q=${city}&aqi=no`
     showInfo(href, true);
 }
 
-// Script to add search input to variable on key press enter
+// Ifall man trycker på enter körs funktionen för att updatera url
 function search(){
     var input = document.getElementById("searchbar");
     input.addEventListener("keypress", function(event) {
@@ -119,7 +125,9 @@ function search(){
     });
 }
 
-// Script to load a new iframe
+// Visar laddar ikonen
+// Updaterar rubriken över iframen efter vad det är som visas
+// Updaterar även vilket område som visas i iframe
 function showMap(){
     var loading = document.getElementById('loadingContainer');
     var container = document.getElementById('frameContainer');
@@ -136,7 +144,7 @@ function showMap(){
 `;
 }
 
-// Script to show drop down menu
+// Visar eller gömmer dropdown menyn
 function showDropdown() {
     setTimeout(() => {
         var node = document.getElementById('dropdown');
@@ -147,7 +155,8 @@ function showDropdown() {
             node.style.visibility = 'visible'
     }, 250);
 }
-// Script to change between celius and fahrenheit
+
+// Ändrar från celsius till fahrenheit och tvärtom
 function changec_f() {
     if (corf == 'c'){
         document.getElementById('c_f').innerHTML = 'F°';
@@ -157,11 +166,12 @@ function changec_f() {
         document.getElementById('c_f').innerHTML = 'C°';
         corf = 'c';
     }
+    // Kör funktionerna för att uppdatera infon efter vad det ändrats till
     showInfo(href, true);
     showInfo(href, false);
 }
 
-// Script to change if iframe shows temp or wind speeds
+// Ändrar ifall iframen visar temperaturen eller vindhastigheten
 function changeFrame(){
     if (overlay== 'wind') {
         document.getElementById('tempButton').innerHTML = 'Show '+ overlay;
@@ -176,7 +186,7 @@ function changeFrame(){
     showMap();
 }
 
-//Script show loading animation before iframe
+// Visar laddnings ikonen innan den visar iframen
 function loadIframe(){
     var loading = document.getElementById('loadingContainer')
     var container = document.getElementById('frameContainer')

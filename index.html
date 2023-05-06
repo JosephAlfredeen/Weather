@@ -9,11 +9,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <script src="script.js"></script>
 </head>
-<body onload='getLocation()'>
+<body onload='getLocation()'> <!-- Hämtar användarens plats och laddar upp informationen på sidan -->
 
     
     <header>
-        <div class="h-div1">
+        <div class="h-div1"> <!-- Knapp för att visa en dropdown meny -->
             <label for="checkbox1">
                 <input type="checkbox" id="checkbox1">
                     <i class="fa-solid fa-arrow-up fa-2x" id="dropArrow"></i>
@@ -22,10 +22,10 @@
         </div>
         <a href="index.html"><img src="images/wos-logo.png" alt="WOS logo"></a>
         <div class="search-container">
-            <i class="fa-solid fa-magnifying-glass" onclick="getSearch()"></i>
-            <input id="searchbar" type="text" placeholder="Search..." onkeydown="search()">
+            <i class="fa-solid fa-magnifying-glass" onclick="getSearch()"></i> <!-- Går att söka ifall man trycker på ikonen -->
+            <input id="searchbar" type="text" placeholder="Search..." onkeydown="search()"> <!-- Kör funktion när man skriver i searchbaren -->
         </div>
-        <div class="h-div2">
+        <div class="h-div2"> <!-- Knapp för att ändra värdena från celsius till fahrenheit -->
             <label for="checkbox2">
                 <input type="checkbox" id="checkbox2">
                     <i class="fa-solid fa-arrow-up fa-2x" id="c_fArrow"></i>
@@ -34,7 +34,7 @@
         </div>
     </header>
 
-    <div id="dropdown">
+    <div id="dropdown"> <!-- Dropdown meny -->
         <p onclick="showInfo('https://api.weatherapi.com/v1/current.json?key=318aa1ee4ae245f18db141657230903&q=china&aqi=no', true)">China</p>
         <p onclick="showInfo('https://api.weatherapi.com/v1/current.json?key=318aa1ee4ae245f18db141657230903&q=spain&aqi=no', true)">Spain</p>
         <p onclick="showInfo('https://api.weatherapi.com/v1/current.json?key=318aa1ee4ae245f18db141657230903&q=usa&aqi=no', true)">Usa</p>
@@ -45,18 +45,18 @@
     </div>
 
 
-    <div class="container" id="container">
+    <div class="container" id="container"> <!-- Här placeras informationen för platsen man är på -->
         <div id="your-location-container">
             <div class="head-container">
                 <h1>Your Location</h1>
             </div>
             <div class="place-container">
                 <div class="head-container">
-                    <p><span id="city"></span>&nbsp; in &nbsp;<span id="country"></span></p>
-                    <p>Last Updated <span id="timestamp"></span></p>
+                    <p><span id="city"></span>&nbsp; in &nbsp; <!-- För att göra mellanslag --><span id="country"></span></p>
+                    <p>Last Updated <span id="timestamp"></span></p> <!-- Plats för information om tiden infon var hämtad -->
                 </div>
                 <div class="condition-container">
-                    <p>Condition is <span id="text"></span><img src="" alt="Icon of weather condition" id="condition-icon"></p>
+                    <p>Condition is <span id="text"></span><img src="" alt="Icon of weather condition" id="condition-icon"></p> <!-- Här placeras informationen om vilken typ av väder det är -->
                 </div>
                 <div class="table-container">
                     <table>
@@ -69,13 +69,13 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td><span id="temp"></span></td>
-                                <td><span id="feelsLike"></span></td>
-                                <td><span id="wind"></span> m/s (<span id="gusts"></span>)</td>
+                                <td><span id="temp"></span></td> <!-- Här placeras temperaturen -->
+                                <td><span id="feelsLike"></span></td> <!-- Här placeras temperaturen av hur varmt det känns -->
+                                <td><span id="wind"></span> m/s (<span id="gusts"></span>)</td> <!-- Här placeras vindhastigheten -->
                             </tr>
                         </tbody>
                     </table>
-                    <table>
+                    <table> <!-- Två olika tabeller för att göra det mer responsivt på mobil  -->
                         <thead>
                             <tr>
                                 <td>Humidity</td>
@@ -85,9 +85,9 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td><span id="humidity"></span>%</td>
-                                <td><span id="pressure"></span> mb</td>
-                                <td><span id="rain"></span> mm</td>
+                                <td><span id="humidity"></span>%</td> <!-- Här placeras fuktigheten -->
+                                <td><span id="pressure"></span> mb</td> <!-- Här placeras lufttrycket -->
+                                <td><span id="rain"></span> mm</td> <!-- Här placeras nederbörden  -->
                             </tr>
                         </tbody>
                     </table>
@@ -96,7 +96,7 @@
         </div>
     </div>
 
-    <div class="container" id="container">
+    <div class="container" id="container"> <!-- Här placeras informationen för platsen man sökt på -->
         <div id="searched-container">
             <div class="head-container">
                 <h1>Searched Location</h1>
@@ -148,19 +148,19 @@
     </div>
 
 
-        <div id="loadingContainer">
+        <div id="loadingContainer"> <!-- Container som visar en ladd-ikon tills iframen laddats -->
             <div class="loadingio-spinner-eclipse-qbgho4nb7xo"><div class="ldio-qhboyfg0l6f">
                 <div></div>
                 </div></div>
             </div>
-                <div id="frameContainer">
-                <h1 id="frameHead"></h1>
-                <div id="frame"></div>
-                <button id="tempButton">Show temp</button>
+            <div id="frameContainer">
+            <h1 id="frameHead"></h1>
+            <div id="frame"></div>
+            <button id="tempButton">Show temp</button> <!-- Knapp för att ändra iframe infon från vind hastighet till temperatur  -->
         </div>
 
     
-<footer>
+<footer> <!-- Footer -->
     <div class="footer-container">
         <div id="footer-links">
             <h1>Live Weather Update</h1>
@@ -182,12 +182,18 @@
 
 
 <script>
+    // Lägger till en event listener som kollar ifall "dropdown" pilen trycks ned. 
+    // Då körs funktion för att visa dropdown menyn
     var dropArrow = document.getElementById('dropArrow');
     dropArrow.addEventListener('click', showDropdown);
 
+    // Lägger till en event listener som kollar ifall "celsius till fahrenheit" pilen trycks ned
+    // Då körs funktion för att ändra celsius till fahrenheit
     var c_fArrow = document.getElementById('c_fArrow')
     c_fArrow.addEventListener('click', changec_f)
 
+    // Lägger till en evnet listener som kollar ifall knappen under iframen trycks ned
+    // Då körs funktion för att ändra iframe informationen från vind till temp
     var temp = document.getElementById('tempButton');
     temp.addEventListener('click', changeFrame)
 </script>
