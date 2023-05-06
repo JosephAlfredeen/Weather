@@ -316,8 +316,11 @@ footer img{
 }
 
 @media screen and (max-width: 750px) {
-    .h-div1 p, header img{
+    .h-div1 p, header a{
         display: none;
+    }
+    .h-div2{
+        margin-right: 30px;
     }
 }
 
